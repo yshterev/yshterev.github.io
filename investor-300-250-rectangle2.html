@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>investor-300-250-rectangle</title>
+  <style>
+    html, body, img {
+      margin:0;
+      padding:0;
+      font-family: 'Roboto', serif;
+    }
+    #logo {
+      margin-top: 14px;
+      -webkit-transition: all 300ms ease-out;
+      -ms-transition: all 300ms ease-out;
+      transition: all 300ms ease-out;
+    }
+
+    .logo-small {
+      margin-top: -8px!important;
+      transform: scale(.7);
+    }
+
+    #main {
+      width: 300px;
+      height: 250px;
+      box-sizing: border-box;
+      padding: 20px;
+      background: url("bgr.jpg") no-repeat top right;
+      position: relative;
+    }
+
+    .slide {
+      width: 100%;
+      height: 130px;
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      text-align: center;
+      background-color: #812990;
+      font-size: 28px;
+      color: #FFF;
+      padding: 20px;
+      box-sizing: border-box;
+      font-weight: 400;
+      -webkit-transition: background-color 300ms ease-out, height 300ms ease-out;
+      -ms-transition: background-color 300ms ease-out, height 300ms ease-out;
+      transition: background-color 300ms ease-out, height 300ms ease-out;
+    }
+
+    .color-blue {
+      background-color: #5857a5;
+    }
+
+    .make-big {
+      height: 180px;
+    }
+
+    .center {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      justify-items:center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center
+    }
+
+    .text.animated {
+      -webkit-animation-duration: 300ms;
+      animation-duration: 300ms;
+    }
+
+    .text-3, .text-4 {
+      font-size: 23px;
+    }
+
+    .text-5 {
+      width: 100%;
+      font-size: 38px;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .show {
+      opacity: 0;
+      display: inline;
+    }
+
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900" rel="stylesheet">
+</head>
+<body>
+<div id="main">
+  <img id="logo" src="bbr-logo.svg" alt="Лого">
+  <div id="slide1" class="slide center slide--one">
+    <span class="text text-1">&euro; 3 000 000 по плана "Юнкер"</span>
+    <span class="text text-2 hide">&euro; 3 000 000 по плана "Юнкер" към търговски банки</span>
+    <span class="text text-3 hide">От 3 до 24 млн. лева за инвестиционно, проектно и свързано с тях оборотно финансиране</span>
+    <span class="text text-4 hide">От 3 до 24 млн. лева за микро, малки, средни и междинни предприятия</span>
+    <span class="text text-5 hide">www.bbr.bg</span>
+  </div>
+</div>
+<script>
+  var slide1 = $('#slide1');
+  var logo = $('#logo');
+  var text1 = $('.text-1');
+  var text2 = $('.text-2');
+  var text3 = $('.text-3');
+  var text4 = $('.text-4');
+  var text5 = $('.text-5');
+
+  var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+  $.fn.extend({
+    animateCss: function (animationName) {
+      this.addClass('animated ' + animationName).one(animationEnd, function() {
+        $(this).removeClass('animated ' + animationName);
+        $(this).trigger('end', animationName);
+      });
+      return this;
+    }
+  });
+
+  setTimeout(function(){
+    slide1.addClass('color-blue make-big');
+    logo.addClass('logo-small');
+    text1.animateCss('fadeOut');
+  }, 1500);
+
+  text1.on('end', function(event, data){
+    if (data === 'fadeIn') {
+      $(this).removeClass('show');
+
+      setTimeout(function(){
+        console.log(1);
+        slide1.addClass('color-blue');
+        slide1.addClass('make-big');
+        logo.addClass('logo-small');
+        text1.animateCss('fadeOut');
+      }, 1500);
+
+      return;
+    }
+
+    $(this).addClass('hide');
+    text2.removeClass('hide');
+    text2.addClass('show');
+    text2.animateCss('fadeIn');
+  });
+
+  text2.on('end', function(event, data){
+    if (data === 'fadeIn') {
+      $(this).removeClass('show');
+
+      setTimeout(function(){
+        console.log(2);
+        slide1.removeClass('color-blue');
+        text2.animateCss('fadeOut');
+      }, 1500);
+
+      return;
+    }
+
+    $(this).addClass('hide');
+    text3.removeClass('hide');
+    text3.addClass('show');
+    text3.animateCss('fadeIn');
+  });
+
+  text3.on('end', function(event, data){
+    if (data === 'fadeIn') {
+      $(this).removeClass('show');
+
+      setTimeout(function(){
+        console.log(3);
+        slide1.addClass('color-blue');
+        text3.animateCss('fadeOut');
+      }, 1500);
+
+      return;
+    }
+
+    $(this).addClass('hide');
+    text4.removeClass('hide');
+    text4.addClass('show');
+    text4.animateCss('fadeIn');
+  });
+
+  text4.on('end', function(event, data){
+    if (data === 'fadeIn') {
+      $(this).removeClass('show');
+
+      setTimeout(function(){
+        console.log(4);
+        slide1.removeClass('color-blue');
+        slide1.removeClass('make-big');
+        logo.removeClass('logo-small');
+        text4.animateCss('fadeOut');
+      }, 1500);
+
+      return;
+    }
+
+    $(this).addClass('hide');
+    text5.removeClass('hide');
+    text5.addClass('show');
+    text5.animateCss('fadeIn');
+  });
+
+  text5.on('end', function(event, data){
+    if (data === 'fadeIn') {
+      $(this).removeClass('show');
+
+      setTimeout(function(){
+        console.log(5);
+        text5.animateCss('fadeOut');
+      }, 1500);
+
+      return;
+    }
+
+    $(this).addClass('hide');
+    text1.removeClass('hide');
+    text1.addClass('show');
+    text1.animateCss('fadeIn');
+  });
+</script>
+</body>
+</html>
