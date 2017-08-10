@@ -98,32 +98,64 @@
 <div id="main">
   <img id="logo" src="bbr-logo.svg" alt="Лого">
   <div id="slide1" class="slide center slide--one">
-    <span class="text text-1">&euro; 3 000 000 по плана "Юнкер"</span>
-    <span class="text text-2 hide">&euro; 3 000 000 по плана "Юнкер" към търговски банки</span>
-    <span class="text text-3 hide">От 3 до 24 млн. лева за инвестиционно, проектно и свързано с тях оборотно финансиране</span>
-    <span class="text text-4 hide">От 3 до 24 млн. лева за микро, малки, средни и междинни предприятия</span>
-    <span class="text text-5 hide">www.bbr.bg</span>
+    <span id="1" class="text text-1">&euro; 3 000 000 по плана "Юнкер"</span>
+    <span id="2" class="text text-2 hide">&euro; 3 000 000 по плана "Юнкер" към търговски банки</span>
+    <span id="3" class="text text-3 hide">От 3 до 24 млн. лева за инвестиционно, проектно и свързано с тях оборотно финансиране</span>
+    <span id="4" class="text text-4 hide">От 3 до 24 млн. лева за микро, малки, средни и междинни предприятия</span>
+    <span id="5" class="text text-5 hide">www.bbr.bg</span>
   </div>
 </div>
 <script>
+  var texts = $('.text');
   var slide1 = $('#slide1');
   var logo = $('#logo');
   var text1 = $('.text-1');
-  var text2 = $('.text-2');
-  var text3 = $('.text-3');
-  var text4 = $('.text-4');
-  var text5 = $('.text-5');
-
   var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 
   $.fn.extend({
     animateCss: function (animationName) {
       this.addClass('animated ' + animationName).one(animationEnd, function() {
-        $(this).removeClass('animated ' + animationName);
-        $(this).trigger('end', animationName);
+        $(this).removeClass('animated ' + animationName).trigger('end', animationName);
       });
       return this;
     }
+  });
+
+  function transitionText(item, data) {
+    var $item = $(item);
+    var nextItem = $item.next();
+
+    if (item.id === '5') {
+      nextItem = text1;
+    }
+
+    if (data === 'fadeIn') {
+      $item.removeClass('show');
+
+      setTimeout(function(){
+        $item.animateCss('fadeOut');
+
+        if (item.id !== '5') {
+          slide1.toggleClass('color-blue');
+        }
+
+        if (item.id === '1' || item.id === '4') {
+          slide1.toggleClass('make-big');
+          logo.toggleClass('logo-small');
+        }
+      }, 1500);
+
+      return;
+    }
+
+    $item.addClass('hide');
+    nextItem.removeClass('hide').addClass('show').animateCss('fadeIn');
+  }
+
+  texts.each(function(){
+    $(this).on('end', function(event, data){
+      transitionText(event.target, data);
+    });
   });
 
   setTimeout(function(){
@@ -132,103 +164,6 @@
     text1.animateCss('fadeOut');
   }, 1500);
 
-  text1.on('end', function(event, data){
-    if (data === 'fadeIn') {
-      $(this).removeClass('show');
-
-      setTimeout(function(){
-        console.log(1);
-        slide1.addClass('color-blue');
-        slide1.addClass('make-big');
-        logo.addClass('logo-small');
-        text1.animateCss('fadeOut');
-      }, 1500);
-
-      return;
-    }
-
-    $(this).addClass('hide');
-    text2.removeClass('hide');
-    text2.addClass('show');
-    text2.animateCss('fadeIn');
-  });
-
-  text2.on('end', function(event, data){
-    if (data === 'fadeIn') {
-      $(this).removeClass('show');
-
-      setTimeout(function(){
-        console.log(2);
-        slide1.removeClass('color-blue');
-        text2.animateCss('fadeOut');
-      }, 1500);
-
-      return;
-    }
-
-    $(this).addClass('hide');
-    text3.removeClass('hide');
-    text3.addClass('show');
-    text3.animateCss('fadeIn');
-  });
-
-  text3.on('end', function(event, data){
-    if (data === 'fadeIn') {
-      $(this).removeClass('show');
-
-      setTimeout(function(){
-        console.log(3);
-        slide1.addClass('color-blue');
-        text3.animateCss('fadeOut');
-      }, 1500);
-
-      return;
-    }
-
-    $(this).addClass('hide');
-    text4.removeClass('hide');
-    text4.addClass('show');
-    text4.animateCss('fadeIn');
-  });
-
-  text4.on('end', function(event, data){
-    if (data === 'fadeIn') {
-      $(this).removeClass('show');
-
-      setTimeout(function(){
-        console.log(4);
-        slide1.removeClass('color-blue');
-        slide1.removeClass('make-big');
-        logo.removeClass('logo-small');
-        text4.animateCss('fadeOut');
-      }, 1500);
-
-      return;
-    }
-
-    $(this).addClass('hide');
-    text5.removeClass('hide');
-    text5.addClass('show');
-    text5.animateCss('fadeIn');
-  });
-
-  text5.on('end', function(event, data){
-    if (data === 'fadeIn') {
-      $(this).removeClass('show');
-
-      setTimeout(function(){
-        console.log(5);
-        text5.animateCss('fadeOut');
-      }, 1500);
-
-      return;
-    }
-
-    $(this).addClass('hide');
-    text1.removeClass('hide');
-    text1.addClass('show');
-    text1.animateCss('fadeIn');
-  });
 </script>
 </body>
 </html>
