@@ -1,0 +1,868 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>edocprint - business with grace</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body class="body--invoice">
+<!-- Sidebar Menu -->
+<aside id="mobile-menu" role="navigation" class="ui vertical inverted sidebar overlay menu">
+  <a class="active item">Home</a>
+  <a class="item">Work</a>
+  <a class="item">Company</a>
+  <a class="item">Careers</a>
+  <a class="item">Login</a>
+  <a class="item">Signup</a>
+</aside>
+
+<!-- Page Contents -->
+<div class="pusher">
+
+  <main>
+
+    <div id="invoice-container" style="margin-left:2rem!important" class="ui basic segment">
+
+      <form class="ui tiny form" method="POST" action="" id="invoice_app">
+        <input type='hidden' name='csrfmiddlewaretoken' value='BAphuHudufHVuZkVW7VButRC1vWvCHLd' />
+
+        <input name="invoice_type" type="hidden" value="invoice"/>
+
+
+
+        <div class="ui grid">
+
+          <div class="equal width row _pb0">
+            <div class="column">
+              <h1>Фактура
+                <small>оригинал</small>
+              </h1>
+            </div>
+            <div class="column">
+
+
+
+              <div id="div_id_number"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_number" >
+                  Номер
+                </label>
+
+
+
+                <input class="numberinput" id="id_number" min="0" name="number" type="number" value="37" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_released_at"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_released_at" >
+                  Дата на издаване
+                </label>
+
+
+
+                <input class="dateinput" id="id_released_at" name="released_at" type="text" value="2016-12-20" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_taxevent_at"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_taxevent_at" >
+                  Данъчно събитие
+                </label>
+
+
+
+                <input class="dateinput" id="id_taxevent_at" name="taxevent_at" type="text" value="2015-02-17" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="equal width row _pb0">
+            <div class="column">
+
+
+
+              <div id="div_id_client_name"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_client_name" class="requiredField">
+                  Получател<span class="asteriskField">*</span>
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_client_name" maxlength="255" name="client_name" type="text" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_client_eik"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_client_eik" class="requiredField">
+                  Булстат<span class="asteriskField">*</span>
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_client_eik" maxlength="255" name="client_eik" type="text" value="2345678376" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_client_dds"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_client_dds" >
+                  Ин по ДДС
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_client_dds" maxlength="255" name="client_dds" type="text" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_client_city"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_client_city" class="requiredField">
+                  Град<span class="asteriskField">*</span>
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_client_city" maxlength="255" name="client_city" type="text" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_client_address"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_client_address" class="requiredField">
+                  Адрес<span class="asteriskField">*</span>
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_client_address" maxlength="255" name="client_address" type="text" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_client_mol"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_client_mol" class="requiredField">
+                  МОЛ<span class="asteriskField">*</span>
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_client_mol" maxlength="255" name="client_mol" type="text" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+            </div>
+            <div class="column">
+
+
+
+              <div id="div_id_name"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_name" class="requiredField">
+                  Има на компанията<span class="asteriskField">*</span>
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_name" name="name" type="text" value="Тутурилов Рангелов ET" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_eik"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_eik" class="requiredField">
+                  БУЛСТАТ<span class="asteriskField">*</span>
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_eik" name="eik" type="text" value="2345678902" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_dds"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_dds" >
+                  Ин по ДДС
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_dds" name="dds" type="text" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_city"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_city" class="requiredField">
+                  Град<span class="asteriskField">*</span>
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_city" name="city" type="text" value="Исихияfurt" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_address"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_address" class="requiredField">
+                  Адрес<span class="asteriskField">*</span>
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_address" name="address" type="text" value="920 Кривошапкова DrivesТошевfort, TN 46105" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_mol"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_mol" class="requiredField">
+                  МОЛ<span class="asteriskField">*</span>
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_mol" name="mol" type="text" value="Др. Възкресения Габровлиева" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="equal width row _pb0">
+            <div class="column">
+              <input type="hidden" name="form-TOTAL_FORMS" v-model="total_forms"/>
+              <input type="hidden" name="form-INITIAL_FORMS" v-model="initial_forms"/>
+              <input type="hidden" name="form-MAX_NUM_FORMS" value="1000"/>
+              <table class="ui very basic compact table">
+                <thead>
+                <tr>
+
+                  <th class="noprint">
+                    <div class="ui icon buttons">
+                      <a class="ui button" @click="add()">+</a>
+                    </div>
+                  </th>
+
+                  <th width="30%">Продукт / Услуга</th>
+                  <th width="10%">Кол.</th>
+                  <th>Мярка</th>
+                  <th>Ед. Цена</th>
+                  <th>% Отстъпка</th>
+                  <th>Цена</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr v-for="(row, index) in rows">
+                  <td class="noprint">
+                    <div class="ui icon buttons">
+                      <a class="ui button" @click="remove(index)">x</a>
+                    </div>
+                  </td>
+                  <td>
+                    <input type="text" :name="'form-'+index+'-name'" v-model="row.name">
+                  </td>
+                  <td>
+                    <input type="number" :name="'form-'+index+'-quantity'" v-model="row.quantity" @keyup="calc_row(index); calc_total();" @click="calc_row(index);calc_total();">
+                  </td>
+                  <td>
+                    <input type="text" :name="'form-'+index+'-unit'" v-model="row.unit">
+                  </td>
+                  <td>
+                    <input type="number" :name="'form-'+index+'-unit_price'" v-model="row.unit_price" @keyup="calc_row(index); calc_total();">
+                  </td>
+                  <td>
+                    <input type="text" :name="'form-'+index+'-discount'" v-model="row.discount" @keyup="calc_row(index); calc_total();">
+                  </td>
+                  <td>
+                    <input type="text" :name="'form-'+index+'-total'" v-model="row.gross" disabled>
+                  </td>
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="equal width row _pb0">
+            <div class="column">
+
+
+
+              <div id="div_id_payment_type"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_payment_type" >
+                  Начин на плащане
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_payment_type" maxlength="255" name="payment_type" type="text" value="Wire transfer" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_payment_iban"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_payment_iban" >
+                  IBAN
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_payment_iban" maxlength="255" name="payment_iban" type="text" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_payment_swift"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_payment_swift" >
+                  SWIFT
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_payment_swift" maxlength="255" name="payment_swift" type="text" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_payment_bank"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_payment_bank" >
+                  Банка
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_payment_bank" maxlength="255" name="payment_bank" type="text" value="Hunt-Price" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_accepted_by"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_accepted_by" >
+                  Приел
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_accepted_by" maxlength="255" name="accepted_by" type="text" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+            </div>
+            <div class="column">
+
+
+
+              <div id="div_id_tax_base"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_tax_base" >
+                  Данъчна основа
+                </label>
+
+
+
+                <input class="numberinput" id="id_tax_base" name="tax_base" step="any" type="number" disabled />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_dds_percent"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_dds_percent" >
+                  ДДС
+                </label>
+
+
+
+                <input class="numberinput" id="id_dds_percent" name="dds_percent" step="0.01" type="number" value="0.00" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_total"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_total" >
+                  Крайна цена
+                </label>
+
+
+
+                <input class="numberinput" id="id_total" name="total" step="any" type="number" disabled />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_verbally"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_verbally" >
+                  Словом
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_verbally" maxlength="255" name="verbally" type="text" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+
+
+
+              <div id="div_id_created_by"
+                   class="inline field custom-inline">
+
+
+
+
+                <label for="id_created_by" >
+                  Съставил
+                </label>
+
+
+
+                <input class="textinput textInput" id="id_created_by" maxlength="255" name="created_by" type="text" />
+
+
+
+
+
+
+
+
+
+
+              </div>
+
+
+            </div>
+          </div>
+
+          <div class="equal width row">
+            <div class="column">
+              <div class="field">
+                <label>Бележка:</label>
+                <input name="note" value="" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <script type="text/javascript">window.formset = [{"quantity": 14.0, "unit_price": "407.36", "id": 3052, "invoice_id": 537, "discount": 0.0, "measure": "", "name": ""}, {"quantity": 57.0, "unit_price": "798.02", "id": 3051, "invoice_id": 537, "discount": 0.0, "measure": "", "name": ""}, {"quantity": 12.0, "unit_price": "813.33", "id": 3050, "invoice_id": 537, "discount": 0.0, "measure": "", "name": ""}, {"quantity": 93.0, "unit_price": "657.56", "id": 3049, "invoice_id": 537, "discount": 0.0, "measure": "", "name": ""}, {"quantity": 132.0, "unit_price": "133.91", "id": 3048, "invoice_id": 537, "discount": 0.0, "measure": "", "name": ""}, {"quantity": 14.0, "unit_price": "761.62", "id": 3047, "invoice_id": 537, "discount": 0.0, "measure": "", "name": ""}, {"quantity": 93.0, "unit_price": "99.86", "id": 3046, "invoice_id": 537, "discount": 0.0, "measure": "", "name": ""}, {"quantity": 110.0, "unit_price": "351.01", "id": 3045, "invoice_id": 537, "discount": 0.0, "measure": "", "name": ""}];</script>
+    <script src="app.js"></script>
+
+
+  </main>
+</div>
+<script src="public.js"></script>
+</body>
+</html>
