@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="snap.svg-min.js"></script>
+  <style>
+    #wrapper {
+      display: block;
+      position: relative;
+      width: 550px;
+      height: 413px;
+    }
+
+    #svg-container {
+      position: absolute;
+    }
+
+    svg #ceiling:hover,
+    svg #wall:hover{
+      cursor: pointer;
+    }
+    .colors {
+      margin-top: 30px;
+    }
+    .colors > div {
+      width: 40px;
+      height: 40px;
+      float: left;
+      margin-right: 15px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div id="wrapper">
+  <svg height="100%" id="svg-container" version="1.1" width="100%" xmlns="http://www.w3.org/2000/svg"></svg>
+  <img src="room-empty.jpg">
+</div>
+<div id="colors" class="colors">
+  <div style="background-color:#42A5F5" data-color="#42A5F5"></div>
+  <div style="background-color:#EC407A" data-color="#EC407A"></div>
+  <div style="background-color:#4DB6AC" data-color="#4DB6AC"></div>
+</div>
+</body>
+<script>
+  window.onload = function (){
+    const colors = document.getElementById('colors');
+    const g = Snap('#svg-container');
+    const strokeWidth = 1;
+    let selectedWall = false;
+    let paintedWalls = [];
+
+    Snap.load("room-empty.svg", function (f) {
+//      let ceiling = f.select("#ceiling").attr({fill: "red"});
+      let ceiling = f.select("#ceiling").attr({fill: "#fff", fillOpacity: 0});
+      let wall = f.select("#wall").attr({fill: "#fff", fillOpacity: 0});
+
+      g.append(ceiling);
+      g.append(wall);
+
+      ceiling.hover(hoverIn, hoverOut);
+      wall.hover(hoverIn, hoverOut);
+      ceiling.click(click);
+      wall.click(click);
+    });
+
+    function clearSelected(){
+      if (!selectedWall) {
+        return;
+      }
+
+      selectedWall.attr({
+        strokeWidth: 0
+      });
+    }
+
+    function click() {
+      clearSelected();
+      selectedWall = this;
+      selectedWall.attr({
+        stroke: "red",
+        strokeWidth: strokeWidth
+      });
+    }
+
+    function hoverIn() {
+      let strokeColor = '#555';
+
+      if (selectedWall && this.node.id === selectedWall.node.id) {
+        strokeColor = 'red';
+      }
+
+      this.attr({
+        stroke: strokeColor,
+        strokeWidth: strokeWidth
+      });
+    }
+
+    function hoverOut() {
+      if (selectedWall && this.node.id === selectedWall.node.id) {
+        return;
+      }
+
+      this.attr({
+        strokeWidth: 0
+      });
+    }
+
+    colors.addEventListener('click', function(e){
+      let color = e.target.dataset.color;
+
+      if (!selectedWall) {
+        return;
+      }
+
+      paintedWalls.push(selectedWall.node.id);
+      selectedWall.attr({
+        fill: color,
+        fillOpacity: 1,
+        strokeWidth: 0
+      })
+    })
+
+
+  }
+</script>
+</html>
